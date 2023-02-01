@@ -24,10 +24,15 @@ function App() {
 
   useEffect(() => {
     if(fromCurrency != null && toCurrency != null){
-      //fetch(`${base_URL}?base_code=${fromCurrency}&target_code=${toCurrency}`)
+      
+      let a = toCurrency
+
      fetch(`https://v6.exchangerate-api.com/v6/aa53957d1994a97e71bdb4e9/pair/${fromCurrency}/${toCurrency}`)
       .then(res => res.json())
-       .then(data => setExchangeRate(data.conversion_rates[toCurrency]))
+       .then(data => {
+        setExchangeRate(data.conversion_rate)
+        
+       })
 
       
       console.log(exchangeRate)
